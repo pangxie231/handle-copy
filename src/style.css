@@ -1,0 +1,10 @@
+html.dark {
+  background: #121212;
+}
+
+:root {
+  --c-primary: #0d828e;
+  --c-primary-deep: #08606a;
+  --c-ok: #1d9c9c;
+  --c-mis: #de7525;
+}
