@@ -12,4 +12,4 @@ import WordBlocks from './WordBlocks.vue';
       <WordBlocks words="不苟言笑"/>
     </div>
   </div>
-</template>scriptz
+</template>
