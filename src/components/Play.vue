@@ -9,7 +9,7 @@ import WordBlocks from './WordBlocks.vue';
 <template>
   <div py-8>
     <div>
-      <WordBlocks words="不苟言笑"/>
+      <WordBlocks words="海纳百川"/>
     </div>
   </div>
 </template>

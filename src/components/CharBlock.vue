@@ -2,7 +2,7 @@
 import ToneSymbol from './ToneSymbol.vue';
 
 
-interface CharDetail {
+export interface CharDetail {
   _1: string
   _2: string
   char: string
