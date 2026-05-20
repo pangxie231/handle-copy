@@ -23,12 +23,12 @@ const confirmAnswer = ()=> {
 <template>
   <div py-8>
     <div flex flex-col items-center>
-      <WordBlocks :words="words" :revealed="true" />
-      <!-- <WordBlocks v-for="w in answers" :key="w" words="海纳百川" :revealed="true" /> -->
+      <!-- <WordBlocks :words="words" :revealed="true" /> -->
+      <WordBlocks v-for="w in answers" :key="w" :word="w" :revealed="true" />
 
 
       <div mt-4 flex flex-col items-center>
-        <WordBlocks :words="inputAnswer" />
+        <WordBlocks :word="inputAnswer" />
         <input v-model="inputAnswer" mt-4 b b-solid b-hex-f5f5f6 w86 p-4 text-center name="answer" type="text" placeholder="输入四字词语..." />
         <button @click="confirmAnswer" :class="inputAnswer.length >= 4 ? 'bg-ok' : ''" px-5 py-2 text-hex-fff rounded-2px mt-6 bg-gray>确 定</button>
         <div mt-6 flex justify-center gap-2 text-gray>
