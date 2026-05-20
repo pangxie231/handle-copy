@@ -44,7 +44,7 @@ const wordsDetail = computed(()=> {
   return pinyins.value.map((py: string, i)=> parsePinYin(py[0],  Array.from(props.words)[i], i))
 })
 
-const answerWords = '纳斯达克'
+const answerWords = '川纳海百'
 // @ts-ignore
 const answer = ref(pinyin.pinyin(answerWords, {
   style: 'TONE2'
@@ -88,7 +88,7 @@ function testAnswer(words: CharDetail[], answers: CharDetail[]) {
 }
 
 const ret = testAnswer(wordsDetail.value, answerDetail.value)
-console.log("🚀 ~ ret:", ret)
+// console.log("🚀 ~ ret:", ret)
 // debugger
 
 
@@ -96,7 +96,7 @@ console.log("🚀 ~ ret:", ret)
 
 <template>
 <div max-w-120 mx-auto flex gap-2>
-  <CharBlock v-for="char in wordsDetail" :char="char" />
+  <CharBlock v-for="(char, i) in wordsDetail" :char="char" :state="ret[i]" />
 </div>
 
 </template>
