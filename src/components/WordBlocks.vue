@@ -3,17 +3,17 @@ import CharBlock, { CharDetail } from './CharBlock.vue';
 import pinyin from 'pinyin';
 import { computed, ref } from 'vue';
 import { pinyinInitials, pinyinFinals } from '~/pinyin'
+import { WORD_LENGTH } from '~/logic'
 
 const props = defineProps<{
   words: string
+  revealed?: boolean
 }>()
 
 // @ts-ignore
 const pinyins = computed(()=> pinyin.pinyin(props.words, {
   style: 'TONE2'
 }))
-console.log("🚀 ~ pinyins:", pinyins.value)
-
 // 得到了每个字的拼音和声调
 // 通过一个方法来处理，变成声母介母韵母和声调，然后还有文字
 
@@ -44,7 +44,7 @@ const wordsDetail = computed(()=> {
   return pinyins.value.map((py: string, i)=> parsePinYin(py[0],  Array.from(props.words)[i], i))
 })
 
-const answerWords = '川纳海百'
+const answerWords = '海纳百川'
 // @ts-ignore
 const answer = ref(pinyin.pinyin(answerWords, {
   style: 'TONE2'
@@ -88,15 +88,19 @@ function testAnswer(words: CharDetail[], answers: CharDetail[]) {
 }
 
 const ret = testAnswer(wordsDetail.value, answerDetail.value)
-// console.log("🚀 ~ ret:", ret)
-// debugger
+
+// 通过revealed是否揭晓
+// 最后会影响样式的应用
 
 
 </script>
 
 <template>
-<div max-w-120 mx-auto flex gap-2>
-  <CharBlock v-for="(char, i) in wordsDetail" :char="char" :state="ret[i]" />
+<div flex gap-2 >
+  <!-- <template v-if="wordsDetail?.length"> -->
+    <CharBlock v-for="(w, i) in 4" :key="i" :char="wordsDetail?.[i]" :state="ret[i]" :revealed="props.revealed" />
+
+  <!-- </template> -->
 </div>
 
 </template>

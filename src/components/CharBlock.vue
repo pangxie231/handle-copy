@@ -10,10 +10,11 @@ export interface CharDetail {
 }
 
 const props = defineProps<{
-  char: CharDetail;
+  char: Partial<CharDetail>;
   state: {
     [k in keyof CharDetail]: "exact" | "misplaced" | "none";
   };
+  revealed?: boolean
 }>();
 
 
@@ -26,7 +27,7 @@ function getStyles(
   stateLabel: "exact" | "misplaced" | "none",
   isChar: boolean = false,
 ) {
-  if(isCharExact.value) return ''
+  if(isCharExact.value || !props.revealed) return ''
 
   return {
     exact: "text-ok",
@@ -36,7 +37,7 @@ function getStyles(
 }
 
 
-const isCharExact = computed(()=> props.state.char === 'exact')
+const isCharExact = computed(()=> props.state?.char === 'exact')
 
 
 // 接收一个题目成语，进行展示
@@ -55,24 +56,24 @@ const isCharExact = computed(()=> props.state.char === 'exact')
     flex-col
     justify-center
     items-center
-    :class="isCharExact ? 'bg-ok text-hex-fff' : ''"
+    :class="(isCharExact && revealed) ? 'bg-ok text-hex-fff' : ''"
   >
     <div class="leading-[1]" flex relative>
-      <span :class="getStyles(state._1)">{{ char._1 }}</span>
+      <span :class="getStyles(state?._1)">{{ char?._1 }}</span>
       <div flex relative>
         <ToneSymbol
-          :class="getStyles(state.tone)"
-          :tone="char.tone"
+          :class="getStyles(state?.tone)"
+          :tone="char?.tone"
           absolute
           w8px
           h8px
           top--4px
         />
-        <span :class="getStyles(state._2)">{{ char._2 }}</span>
+        <span :class="getStyles(state?._2)">{{ char?._2 }}</span>
       </div>
     </div>
-    <div text-30px :class="getStyles(state.char)">
-      {{ char.char }}
+    <div text-30px :class="getStyles(state?.char)">
+      {{ char?.char }}
     </div>
   </div>
 </template>
