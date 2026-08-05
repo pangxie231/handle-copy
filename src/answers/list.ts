@@ -41,7 +41,7 @@
  *
  */
 
-import { seedShuffle } './utils'
+import { seedShuffle } from './utils'
 
 function prepare<T>(len: number, arr: T[]) {
   if(import.meta.hot && len !== arr.length) 
@@ -538,3 +538,30 @@ export const answers: string[][] = [
   ..._2023_JAN,
   ..._2023_FEB,
 ]
+
+if (import.meta.hot) {
+  const checkValidIdiom: (a: string, b:boolean)=> boolean = (a,b)=> {
+    return true
+  }
+  const map = new Map<string, number>()
+  answers.forEach((a, i)=> {
+    // 第一项为空
+    if(!a[0]) return
+
+    if(!map.has(a[0])) {
+      map.set(a[0], i)
+    } else {
+      throw new Error(`Duplicated ${a[1]}在 ${map.get(a[1])}位置重复了`)
+    }
+
+    // 提示词是否在成语中
+    if(a[1] && !a[0].includes(a[1])) {
+      throw new Error(`Hint ${a[1]} 不在 ${a[0]} 中`)
+    }
+
+    // 是否为成语
+    if(!checkValidIdiom(a[0], true)) {
+      throw new Error(`${a[0]} 不是一个成语`)
+    }
+  })
+}
