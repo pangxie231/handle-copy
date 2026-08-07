@@ -11,7 +11,8 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '~/': `${path.resolve(__dirname, 'src')}/`
+      '~/': `${path.resolve(__dirname, 'src')}/`,
+      '@hankit/tools': path.resolve(__dirname, 'packages/tools/src/index.ts'),
     }
   }
 })

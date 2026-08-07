@@ -19,6 +19,7 @@
   "devDependencies": {
     "@iconify-json/carbon": "^1.2.21",
     "@types/node": "^24.12.4",
+    "@types/pinyin": "^2.10.2",
     "@types/seedrandom": "^3.0.8",
     "@vitejs/plugin-vue": "^6.0.6",
     "@vue/tsconfig": "^0.9.1",
