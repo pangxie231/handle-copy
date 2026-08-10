@@ -539,10 +539,8 @@ export const answers: string[][] = [
   ..._2023_FEB,
 ]
 
+import { checkValidIdiom } from '../logic/check'
 if (import.meta.hot) {
-  const checkValidIdiom: (a: string, b:boolean)=> boolean = (a,b)=> {
-    return true
-  }
   const map = new Map<string, number>()
   answers.forEach((a, i)=> {
     // 第一项为空
