@@ -1,3 +1,3 @@
-import _pinyinWeb from 'pinyin/lib/web-pinyin.js'
+import _pinyinWeb from 'pinyin'
 
-export const getPinyinRaw = _pinyinWeb as typeof import('pinyin')
+export const getPinyinRaw = _pinyinWeb
