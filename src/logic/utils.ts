@@ -2,13 +2,18 @@ import seedrandom from "seedrandom";
 import { WORD_LENGTH } from "./constant";
 import { SpMode } from '@hankit/tools'
 import { InputMode, ParsedChar } from './types'
+import { getPinyin } from './idioms'
 
 export function getHint(word: string) {
   return Math.floor(seedrandom(word)() * WORD_LENGTH)
 }
 
-export function parseChar(char: string, pinyin?: string, mode?: InputMode, spMode: SpMode): ParsedChar {
+export function parsePinyiin(pinyin: string, mode: InputMode = 'py', spMode: SpMode = 'sougou') {
   
+}
+
+export function parseChar(char: string, pinyin?: string, mode?: InputMode, spMode: SpMode): ParsedChar {
+
 }
 
 export function parseWord(word: string, answer?: string, mode?: InputMode, spMode?: SpMode) {
