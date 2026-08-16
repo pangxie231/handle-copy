@@ -126,6 +126,10 @@ export function testAnswer(input: ParsedChar[], answer: ParsedChar[]) {
           : 'none',
     }
   })
+}
+
+export function checkPass(result: MatchResult[]) {
+  return result.every(r=> r.char === 'exact')
 
 }
 

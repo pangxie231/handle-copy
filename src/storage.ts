@@ -5,7 +5,8 @@ import type { TriesMeta } from './logic'
 import { computed } from "vue";
 
 
-const history = useStorage<Record<number, TriesMeta>>('handle-tries-meta', {})
+export const legacyTries = useStorage<Record<number, string[]>>('handle-tries', {})
+export const history = useStorage<Record<number, TriesMeta>>('handle-tries-meta', {})
 export const initialized = useStorage('handle-initialized', false)
 
 
@@ -22,6 +23,18 @@ export const meta = computed<TriesMeta>({
   set(v) {
     // @ts-expect-error
     history.value[dayNo.value] = v
+  }
+})
+
+export const tries = computed<string[]>({
+  get() {
+    if(!meta.value.tries) {
+      meta.value.tries = []
+    }
+    return legacyTries.value[dayNo.value] || meta.value.tries
+  },
+  set(v) {
+    meta.value.tries = v
   }
 })
 
