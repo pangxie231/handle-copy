@@ -8,7 +8,7 @@ import { computed } from "vue";
 export const legacyTries = useStorage<Record<number, string[]>>('handle-tries', {})
 export const history = useStorage<Record<number, TriesMeta>>('handle-tries-meta', {})
 export const initialized = useStorage('handle-initialized', false)
-
+export const colorblind = useStorage('handle-colorblind', false)
 
 export const meta = computed<TriesMeta>({
   get() {

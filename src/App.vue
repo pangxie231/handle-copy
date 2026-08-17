@@ -1,10 +1,20 @@
 <script setup lang="ts">
-import Play from './components/Play.vue';
+import '~/init'
+import { answer, dayNo, daySince, isDev } from '~/state'
+import { colorblind } from '~/storage'
+import { DAYS_PLAY_BACK } from '~/logic/constant'
+import { useWindowSize } from '@vueuse/core'
+import { watchEffect } from 'vue'
 
+const { height } = useWindowSize()
+
+watchEffect(()=> {
+  document.documentElement.style.setProperty('--vh', `${height.value / 100}px`)
+})
 </script>
 
 <template>
-  <main text-gray-700>
-    <Play/>
+  <main>
+    
   </main>
 </template>
