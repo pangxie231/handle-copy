@@ -6,6 +6,7 @@ import { DAYS_PLAY_BACK } from '~/logic/constant'
 import { useWindowSize } from '@vueuse/core'
 import { watchEffect } from 'vue'
 import NotTodayBanner from './components/NotTodayBanner.vue'
+import Navbar from './components/Navbar.vue'
 
 const { height } = useWindowSize()
 
@@ -16,6 +17,7 @@ watchEffect(()=> {
 
 <template>
   <main>
-    <NotTodayBanner/>
+    <!-- <NotTodayBanner/> -->
+    <Navbar/>
   </main>
 </template>

@@ -76,3 +76,5 @@ export function pauseTimer() {
     meta.value.start = undefined
   }
 }
+
+export const gameCount = computed(()=> Object.values(history.value).filter(m=> m.passed || m.answer || m.failed).length)
