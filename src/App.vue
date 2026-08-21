@@ -5,6 +5,7 @@ import { colorblind } from '~/storage'
 import { DAYS_PLAY_BACK } from '~/logic/constant'
 import { useWindowSize } from '@vueuse/core'
 import { watchEffect } from 'vue'
+import NotTodayBanner from './components/NotTodayBanner.vue'
 
 const { height } = useWindowSize()
 
@@ -15,6 +16,6 @@ watchEffect(()=> {
 
 <template>
   <main>
-    
+    <NotTodayBanner/>
   </main>
 </template>
