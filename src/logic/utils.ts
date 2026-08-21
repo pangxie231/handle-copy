@@ -3,7 +3,7 @@ import { WORD_LENGTH } from "./constant";
 import { pinyinInitials, SpMode, toShuangpin, toZhuyin } from '@hankit/tools'
 import type { InputMode, ParsedChar, MatchResult } from './types'
 import { getPinyin } from './idioms'
-import { toSimplified } from "packages/tools/src/convert";
+import { toSimplified } from "@hankit/tools";
 
 export function getHint(word: string) {
   return Math.floor(seedrandom(word)() * WORD_LENGTH)
