@@ -6,6 +6,7 @@ export default defineConfig({
   // ...UnoCSS options
   shortcuts: {
     'icon-btn': 'text-1.2em bg-transparent border-none cursor-pointer opacity-75 hover:text-primary',
+    'bg-base': 'bg-white dark:bg-[#121212]',
   },
   theme: <Theme>{
     colors: {

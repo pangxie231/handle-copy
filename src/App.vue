@@ -7,6 +7,7 @@ import { useWindowSize } from '@vueuse/core'
 import { watchEffect } from 'vue'
 import NotTodayBanner from './components/NotTodayBanner.vue'
 import Navbar from './components/Navbar.vue'
+import Modal from './components/Modal.vue'
 
 const { height } = useWindowSize()
 
@@ -19,5 +20,8 @@ watchEffect(()=> {
   <main>
     <!-- <NotTodayBanner/> -->
     <Navbar/>
+    <Modal>
+      wsnd
+    </Modal>
   </main>
 </template>
