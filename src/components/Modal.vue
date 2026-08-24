@@ -66,7 +66,7 @@ const transform = computed(() => {
 </script>
 
 <template>
-  <div fixed z-40 :class="[containerPositionClass]">
+  <div fixed z-40 :class="[containerPositionClass, modelValue ? '' : 'pointer-events-none']">
     <div
       v-if="mask"
       class="bg-base inset-0 absolute"

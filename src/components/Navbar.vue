@@ -28,7 +28,7 @@ function openHelp() {
         </button>
       </div>
       <div flex items-center>
-        <button icon-btn mx2>
+        <button icon-btn mx2 @click="toggleSettings()">
           <div i-carbon-settings/>
         </button>
         <button icon-btn mx2>
