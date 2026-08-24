@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed } from 'vue';
+import { computed } from "vue";
 
 const props = withDefaults(
   defineProps<{
@@ -18,28 +18,66 @@ defineEmits<{
   (e: "update:modelValue", value: boolean): void;
 }>();
 
-const containerPositionClass = computed(() => {
-  if (props.mask)
-    return 'bottom-0 left-0 right-0 top-0'
+const positionClass = computed(() => {
   switch (props.direction) {
-    case 'bottom':
-      return 'bottom-0 left-0 right-0'
-    case 'top':
-      return 'top-0 left-0 right-0'
-    case 'left':
-      return 'bottom-0 left-0 top-0'
-    case 'right':
-      return 'bottom-0 top-0 right-0'
+    case "bottom":
+      return "bottom-0 left-0 right-0 border-t";
+    case "top":
+      return "top-0 left-0 right-0 border-b";
+    case "left":
+      return "bottom-0 left-0 top-0 border-r w-max";
+    case "right":
+      return "bottom-0 right-0 top-0 border-l w-max";
     default:
-      return ''
+      return "";
   }
-})
+});
+
+const containerPositionClass = computed(() => {
+  if (props.mask) return "bottom-0 left-0 right-0 top-0";
+  switch (props.direction) {
+    case "bottom":
+      return "bottom-0 left-0 right-0";
+    case "top":
+      return "top-0 left-0 right-0";
+    case "left":
+      return "bottom-0 left-0 top-0";
+    case "right":
+      return "bottom-0 top-0 right-0";
+    default:
+      return "";
+  }
+});
+
+const transform = computed(() => {
+  switch (props.direction) {
+    case "bottom":
+      return "translateY(100%)";
+    case "top":
+      return "translateY(-100%)";
+    case "left":
+      return "translateX(100%)";
+    case "right":
+      return "translateX(-100%)";
+    default:
+      return "";
+  }
+});
 </script>
 
 <template>
   <div fixed z-40 :class="[containerPositionClass]">
-    <div v-if="mask" class="bg-base inset-0 absolute" :class="modelValue ? 'opacity-50' : 'opacity-0'" @click="$emit('update:modelValue', false)"></div>
-    <div class="absolute">
+    <div
+      v-if="mask"
+      class="bg-base inset-0 absolute"
+      :class="modelValue ? 'opacity-50' : 'opacity-0'"
+      @click="$emit('update:modelValue', false)"
+    ></div>
+    <div
+      class="bg-base absolute transition-all duration-200 ease-out max-w-screen max-h-screen overflow-auto"
+      :class="[positionClass]"
+      :style="modelValue ? {} : { transform }"
+    >
       <slot />
     </div>
   </div>
