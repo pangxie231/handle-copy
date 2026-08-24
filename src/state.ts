@@ -2,7 +2,7 @@ import { refDebounced, useDark, useNow, useRafFn } from "@vueuse/core";
 import { computed, ref } from "vue";
 import { checkPass, isDstObserved, parseWord, testAnswer } from "./logic";
 import { START_DATE, TRIES_LIMIT } from "./logic/constant";
-import { meta, tries } from "./storage";
+import { meta, tries, inputMode, useNumberTone as _useNumberTone } from "./storage";
 
 // @ts-expect-error
 const now = useNow({scheduler: (cb)=> {
@@ -12,8 +12,18 @@ export const isDark = useDark()
 export const showHelp = ref(false)
 export const showCheatSheet = ref(false)
 export const showDashboard = ref(false)
-export const showSettings = ref(false)
+export const showSettings = ref(true)
 export const useMask = ref(false)
+
+export const useNumberTone = computed(()=> {
+  if(inputMode.value === 'sp') {
+    return true
+  }
+  if (inputMode.value === 'zy') {
+    return false
+  }
+  return _useNumberTone.value
+})
 
 export const answer = ref('声名鹊起')
 

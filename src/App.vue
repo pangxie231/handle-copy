@@ -7,7 +7,7 @@ import { useWindowSize } from '@vueuse/core'
 import { ref, watchEffect } from 'vue'
 import NotTodayBanner from './components/NotTodayBanner.vue'
 import Navbar from './components/Navbar.vue'
-import Modal from './components/Modal.vue'
+import ModasLayer from './components/ModasLayer.vue'
 
 const { height } = useWindowSize()
 
@@ -15,15 +15,12 @@ watchEffect(()=> {
   document.documentElement.style.setProperty('--vh', `${height.value / 100}px`)
 })
 
-const showTest = ref(true)
 </script>
 
 <template>
   <main>
     <!-- <NotTodayBanner/> -->
     <Navbar/>
-    <Modal direction="top" v-model="showTest">
-      wsnd
-    </Modal>
+    <ModasLayer/>
   </main>
 </template>
