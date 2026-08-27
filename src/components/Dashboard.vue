@@ -47,7 +47,48 @@ const validWords = computed(()=> allWords.value.filter(i=> checkValidIdiom(i!, t
 </script>
 
 <template>
-  <div>
+  <div p5 flex="~ col items-center justify-center" relative>
+    <div absolute top-4 right-4>
+      <button>
+        <div i-carbon-close></div>
+      </button>
+    </div>
 
+    <p>
+      <b>{{ t('dashboard') }}</b>
+    </p>
+    <div>
+      <p>
+        {{ t('guess-dist') }}
+      </p>
+      <div v-for="i in triesMax" :key="i">
+        <div>
+          {{ i === 10 ? '10+' : i }}
+        </div>
+        <div>
+          <div>
+            {{ triesMap.get(i) }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div flex="~" gap-8 my-4>
+      <DashboardItem :value="gameCount" :text="t('games-count')"></DashboardItem>
+      <DashboardItem :value="passedCount" :text="t('win-count')"></DashboardItem>
+      <DashboardItem :value="noHintPassedCount" :text="t('win-no-hint-count')"></DashboardItem>
+      <DashboardItem :value="`${Math.round(passedCount / gameCount * 100)}%`" :text="t('win-rate')"></DashboardItem>
+    </div>
+
+    <div flex="~" gap-8 my-4>
+      <DashboardItem :value="allWords.length" :text="t('used-words')"></DashboardItem>
+      <DashboardItem :value="`${Math.round(validWords.length / allWords.length * 100)}%`" :text="t('valid-words-rate')"></DashboardItem>
+
+    </div>
+
+    <div flex="~" gap-8 my-4>
+      <DashboardItem :value="(historyTriesCount / gameCount).toFixed(1)" :text="t('average-tries-count')"></DashboardItem>
+      <DashboardItem :value="avergeDurations || '-'" :text="t('average-durations')"></DashboardItem>
+    </div>
   </div>
 </template>

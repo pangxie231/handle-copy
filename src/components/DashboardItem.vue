@@ -6,7 +6,7 @@ defineProps<{
 </script>
 
 <template>
-  <div>
+  <div flex="~ col items-center">
     <div>
       {{ value }}
     </div>

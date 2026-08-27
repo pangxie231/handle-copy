@@ -11,7 +11,7 @@ const now = useNow({scheduler: (cb)=> {
 export const isDark = useDark()
 export const showHelp = ref(false)
 export const showCheatSheet = ref(false)
-export const showDashboard = ref(false)
+export const showDashboard = ref(true)
 export const showSettings = ref(false)
 export const useMask = ref(false)
 

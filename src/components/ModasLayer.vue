@@ -7,6 +7,7 @@ import {
 } from '~/state'
 import Modal from './Modal.vue';
 import Settings from './Settings.vue';
+import Dashboard from './Dashboard.vue';
 </script>
 
 <template>
@@ -15,5 +16,8 @@ import Settings from './Settings.vue';
   </Modal>
   <Modal v-model="showSettings" direction="top">
     <Settings/>
+  </Modal>
+  <Modal v-model="showDashboard" direction="top">
+    <Dashboard/>
   </Modal>
 </template>
