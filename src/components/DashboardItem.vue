@@ -6,11 +6,11 @@ defineProps<{
 </script>
 
 <template>
-  <div flex="~ col items-center">
-    <div>
+  <div>
+    <div text-3xl font>
       {{ value }}
     </div>
-    <div>
+    <div op50 text-center>
       {{ text }}
     </div>
   </div>

@@ -18,7 +18,7 @@ watchEffect(()=> {
 </script>
 
 <template>
-  <main>
+  <main text-center>
     <!-- <NotTodayBanner/> -->
     <Navbar/>
     <ModasLayer/>

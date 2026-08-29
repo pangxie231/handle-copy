@@ -23,7 +23,7 @@ function openHelp() {
         <button icon-btn mx2>
           <div i-carbon-help />
         </button>
-        <button icon-btn mx2>
+        <button icon-btn mx2 @click="toggleDashboard()">
           <div i-carbon-catalog/>
         </button>
       </div>

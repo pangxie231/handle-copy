@@ -89,7 +89,7 @@ export const gameCount = computed(() => Object.values(history.value).filter(m =>
 export const passedTries = computed(()=> Object.values(history.value).filter(m=> m.passed))
 export const noHintPassedCount = computed(()=> Object.values(history.value).filter(m=> !m.hint && m.passed).length)
 export const passedCount = computed(()=> passedTries.value.length)
-export const historyTriesCount = computed(()=> Object.values(history.value).filter(m=> m.passed || m.failed || m.answer).map(m=> m.tries?.length || 0).reduce((a,b)=> a + b))
+export const historyTriesCount = computed(()=> Object.values(history.value).filter(m=> m.passed || m.failed || m.answer).map(m=> m.tries?.length || 0).reduce((a,b)=> a + b, 0))
 
 export const triesCount = computed(()=> tries.value.length)
 export const avergeDurations = computed(() => {
