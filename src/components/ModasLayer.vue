@@ -8,11 +8,13 @@ import {
 import Modal from './Modal.vue';
 import Settings from './Settings.vue';
 import Dashboard from './Dashboard.vue';
+import CheatSheet from './CheatSheet.vue';
+
 </script>
 
 <template>
-  <Modal v-model="showCheatSheet">
-
+  <Modal v-model="showCheatSheet" direction="right">
+    <CheatSheet/>
   </Modal>
   <Modal v-model="showSettings" direction="top">
     <Settings/>
