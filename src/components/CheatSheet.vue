@@ -2,7 +2,16 @@
 import { getShuangConstants, pinyinFinals, pinyinInitials, zhuyinSymbols } from '@hankit/tools'
 import { inputMode, spMode } from '~/storage'
 import { t } from "~/i18n";
-import { showCheatSheet } from '~/state'
+import { getSymbolState, showCheatSheet } from '~/state'
+
+function getSymbolState(symbol: string, key?: '_1' | '_2') {
+  
+}
+
+function close() {
+  showCheatSheet.value = false
+}
+
 </script>
 <template>
   <div relative p8 pt4>

@@ -11,7 +11,7 @@ const now = useNow({scheduler: (cb)=> {
 }})
 export const isDark = useDark()
 export const showHelp = ref(false)
-export const showCheatSheet = ref(true)
+export const showCheatSheet = ref(false)
 export const showDashboard = ref(false)
 export const showSettings = ref(false)
 export const useMask = ref(false)
@@ -65,39 +65,3 @@ export const parsedTries = computed(()=> tries.value.map((i)=> {
     result
   }
 }))
-
-export function getSymbolState(symbol: string | number, key?: '_1' | '_2' | 'tone') {
-  const results: MatchType[] = []
-  for (const t of parsedTries.value) {
-    for (let i = 0; i < WORD_LENGTH; i++) {
-      const w = t.word[i]
-      const r = t.result[i]
-      if (key) {
-        if(w[key] === symbol) {
-          results.push(r[key])
-        }
-      } else {
-        if(w._1 === symbol) {
-          results.push(r._1)
-        }
-        if(w._2 === symbol) {
-          results.push(r._2)
-        }
-        if(w._3 === symbol) {
-          results.push(r._3)
-        }
-      }
-    }
-  }
-
-  if(results.includes('exact')) {
-    return 'exact'
-  }
-  if(results.includes('misplaced')) {
-    return 'misplaced'
-  }
-  if(results.includes('none')) {
-    return 'none'
-  }
-  return null
-}

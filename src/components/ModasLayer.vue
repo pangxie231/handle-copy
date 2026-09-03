@@ -14,7 +14,7 @@ import CheatSheet from './CheatSheet.vue';
 
 <template>
   <Modal v-model="showCheatSheet" direction="right">
-    <CheatSheet/>
+    <!-- <CheatSheet/> -->
   </Modal>
   <Modal v-model="showSettings" direction="top">
     <Settings/>
